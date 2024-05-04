@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "blog-manager-api"
+version = "0.1.0"
+description = "Manage Blog Comments and Likes"
+authors = ["Igor Souza <igormcsouza@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.111.0"
+uvicorn = "^0.29.0"
+mangum = "^0.17.0"
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.12.2"
+pytest = "^8.2.0"
+
+[tool.taskipy.tasks]
+dev = "uvicorn source.main:app"
+test = "pytest -vv"
+clean = "rm -rf **/*/__pycache__"
+zip = "chmod +x scripts/create_zip.sh && ./scripts/create_zip.sh"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
